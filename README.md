@@ -5,10 +5,10 @@ This system is real-time distributed system which processes large amounts of use
 - Average time users spent on the appropriate screen
 
 ## Components
-- DataSimulator - Simulates user behavioral data, specifically user clicks with timestamp per each screen and sends to DataReceiver for further processing
-- DataReceiver - Receives huge amount of user behavioral raw data and stores them into Amazon S3
-- DataProcessor - Reads raw data from S3, normalizes, aggregates and saves into the persistent database(Amazon DynamoDB)
-- DataAnalyzer - Works with processed data, analyzes it and provides the required statistics
+- [DataSimulator](https://github.com/distributed-analytics-system/DistributedSystem-DataSimulator/blob/main/README.md) - Simulates user behavioral data, specifically user clicks with timestamp per each screen and sends to DataReceiver for further processing
+- [DataReceiver](https://github.com/distributed-analytics-system/DistributedSystem-DataReceiver/blob/main/README.md) - Receives huge amount of user behavioral raw data and stores them into Amazon S3
+- [DataProcessor](https://github.com/distributed-analytics-system/DistributedSystem-DataProcessor/blob/main/README.md)  - Reads raw data from S3, normalizes, aggregates and saves into the persistent database(Amazon DynamoDB)
+- [DataAnalyzer](https://github.com/distributed-analytics-system/DistributedSystem-DataAnalyzer/blob/main/README.md) - Works with processed data, analyzes it and provides the required statistics
 
 ## Architecture diagram of the system
 
