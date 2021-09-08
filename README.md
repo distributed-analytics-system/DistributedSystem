@@ -24,7 +24,6 @@ This system is real-time distributed system which processes large amounts of use
 2. Amazon S3 - Used as an intermediate data store to keep the user behavioral raw data
 
 ## Run the system locally
-TODO
 
 ## Maintainer contact
 - vahagsaribeyan@gmail.com
