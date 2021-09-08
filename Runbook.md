@@ -21,3 +21,12 @@ Make sure the service is running successfully by checking the logs. There should
 ### Rollback plan
 
 As this is brand new system, nothing to be rollbacked here. Just in case of issues reach out to developers for further investigation.
+
+#### Monitoring/Aleting
+
+| Application | Severity | Resolution |
+| ------ | ------ | ------ | 
+| DataReceiver | Critical | Check logs, restart the service |
+| DataAnalyzer | Critical | Check logs, restart the service |
+| DataProcessor | Major | Check logs, redeploy the function |
+| DataSimulator | Minor | Check logs, restart the service |
