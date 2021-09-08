@@ -12,19 +12,19 @@ This system is real-time distributed system which processes large amounts of use
 
 ## Architecture diagram of the system
 
-![Architecture diagram](./docs/image/ArchDiagram.png)
+![Architecture diagram](./diagrams/ArchDiagram.png)
 
 ## Sequence diagram of the system
 
-![Sequence diagram](./docs/image/SequenceDiagram.png)
+![Sequence diagram](./diagrams/SequenceDiagram.png)
 
-#### Datastores in use
+## Datastores in use
 
 1. Amazon DynamoDB - Used as a persistent database to keep normalized data to provide statistics
 2. Amazon S3 - Used as an intermediate data store to keep the user behavioral raw data
 
-#### Run the system locally
+## Run the system locally
 
-#### Maintainer contact
+## Maintainer contact
 - vahagsaribeyan@gmail.com
 
