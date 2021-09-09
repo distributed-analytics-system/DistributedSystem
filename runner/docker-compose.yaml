@@ -1,0 +1,63 @@
+version: "3.3"
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "4566-4599:4566-4599"
+    environment:
+      - SERVICES=s3,lambda,dynamodb
+    volumes:
+      - ./aws:/docker-entrypoint-initaws.d
+  # command: aws --endpoint-url=http://localhost:4566 s3 mb s3://distributed-analytics-system
+
+  data_simulator:
+    build: https://github.com/distributed-analytics-system/DistributedSystem-DataSimulator.git
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: development
+      PORT: 8080
+      LOG_LEVEL: info
+      DATA_RECEIVER_BASE_URL: http://localhost:8081
+
+  data_receiver:
+    build: https://github.com/distributed-analytics-system/DistributedSystem-DataReceiver.git
+    ports:
+      - "8081:8081"
+    environment:
+      NODE_ENV: development
+      PORT: 8081
+      DD_AGENT_HOST: empty
+      LOG_LEVEL: info
+      AWS_REGION: local
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_ENDPOINT: http://localhost:4566
+      AWS_S3_BUCKET_NAME: distributed-analytics-system
+
+  data_processor:
+    build: https://github.com/distributed-analytics-system/DistributedSystem-DataProcessor.git
+    environment:
+      NODE_ENV: development
+      AWS_REGION: local
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_ENDPOINT: http://localhost:4566
+      AWS_S3_BUCKET_NAME: distributed-analytics-system
+    depends_on:
+      - localstack
+
+  data_analyzer:
+    build: https://github.com/distributed-analytics-system/DistributedSystem-DataAnalyzer.git
+    ports:
+      - "8082:8082"
+    environment:
+      NODE_ENV: development
+      PORT: 8082
+      DD_AGENT_HOST: empty
+      LOG_LEVEL: info
+      AWS_REGION: local
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_ENDPOINT: http://localhost:4566
