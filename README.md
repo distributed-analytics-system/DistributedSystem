@@ -12,11 +12,11 @@ This system is real-time distributed system which processes large amounts of use
 
 ## Architecture diagram of the system
 
-![Architecture diagram](./diagrams/ArchDiagram.png)
+![Architecture diagram](./docs/diagrams/ArchDiagram.png)
 
 ## Sequence diagram of the system
 
-![Sequence diagram](./diagrams/SequenceDiagram.png)
+![Sequence diagram](./docs/diagrams/SequenceDiagram.png)
 
 ## Datastores in use
 
@@ -24,6 +24,14 @@ This system is real-time distributed system which processes large amounts of use
 2. Amazon S3 - Used as an intermediate data store to keep the user behavioral raw data
 
 ## Run the system locally
+
+In order to run the system locally you will need to instal [Docker](https://docs.docker.com/get-docker/) on your machine. After the installation, open the terminal and run the following commands.
+
+```sh
+git clone https://github.com/distributed-analytics-system/DistributedSystem.git
+cd DistributedSystem
+docker-compose up
+```
 
 ## Maintainer contact
 - vahagsaribeyan@gmail.com

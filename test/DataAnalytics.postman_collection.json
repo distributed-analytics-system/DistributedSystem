@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "a79c0065-267b-4090-91c3-cdffde88dfcb",
+		"name": "DataAnalytics",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SendEvents",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n    \"user-uuid\": \"3588b44b-ec83-430a-85f1-c4eb6d50ec17\",\n    \"timestamp\": \"1599397017\",\n    \"screen\": \"home\"\n},\n{\n    \"user-uuid\": \"3588b44b-ec83-430a-85f1-c4eb6d50ec17\",\n    \"timestamp\": \"15993979999\",\n    \"screen\": \"home\"\n},\n{\n    \"user-uuid\": \"3588b44b-ec83-430a-85f1-c4eb6d50ec17\",\n    \"timestamp\": \"159939799998\",\n    \"screen\": \"settings\"\n}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAverageTimeSpent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v1/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/timespent?screen=settings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"users",
+						"3588b44b-ec83-430a-85f1-c4eb6d50ec17",
+						"timespent"
+					],
+					"query": [
+						{
+							"key": "screen",
+							"value": "settings"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SimulateDataGeneration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/simulate?recordCount=100000&userCount=200",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"simulate"
+					],
+					"query": [
+						{
+							"key": "recordCount",
+							"value": "100000"
+						},
+						{
+							"key": "userCount",
+							"value": "200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAverageClickCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/v1/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/clicks?screen=home",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"v1",
+						"users",
+						"3588b44b-ec83-430a-85f1-c4eb6d50ec17",
+						"clicks"
+					],
+					"query": [
+						{
+							"key": "screen",
+							"value": "home"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
