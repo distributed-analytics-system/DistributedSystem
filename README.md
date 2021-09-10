@@ -33,6 +33,10 @@ cd DistributedSystem
 docker-compose up
 ```
 
+## Test the system locally
+
+In order to test the system, import postman collections from **test** folder and make the SimulateDataGeneration request to generate user behavioral data and process through the system. It will take few mins to process all the data depeneding on the parameters you provided while generating. After that you can make GetAverageClickCount or GetAverageTimeSpent request to see the statistics.
+
 ## Maintainer contact
 - vahagsaribeyan@gmail.com
 
