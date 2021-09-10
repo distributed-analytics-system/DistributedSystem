@@ -9,17 +9,21 @@ services:
       - SERVICES=s3,lambda,dynamodb
     volumes:
       - ./aws:/docker-entrypoint-initaws.d
-  # command: aws --endpoint-url=http://localhost:4566 s3 mb s3://distributed-analytics-system
+    networks:
+      - local_network
 
   data_simulator:
     build: https://github.com/distributed-analytics-system/DistributedSystem-DataSimulator.git
+    container_name: data_simulator
     ports:
       - "8080:8080"
     environment:
       NODE_ENV: development
       PORT: 8080
       LOG_LEVEL: info
-      DATA_RECEIVER_BASE_URL: http://localhost:8081
+      DATA_RECEIVER_BASE_URL: http://data_receiver:8081
+    networks:
+      - s_to_s_network
 
   data_receiver:
     build: https://github.com/distributed-analytics-system/DistributedSystem-DataReceiver.git
@@ -27,14 +31,18 @@ services:
       - "8081:8081"
     environment:
       NODE_ENV: development
+      container_name: data_receiver
       PORT: 8081
       DD_AGENT_HOST: empty
       LOG_LEVEL: info
       AWS_REGION: local
       AWS_ACCESS_KEY_ID: test
       AWS_SECRET_ACCESS_KEY: test
-      AWS_ENDPOINT: http://localhost:4566
+      AWS_ENDPOINT: http://localstack:4566
       AWS_S3_BUCKET_NAME: distributed-analytics-system
+    networks:
+      - local_network
+      - s_to_s_network
 
   data_processor:
     build: https://github.com/distributed-analytics-system/DistributedSystem-DataProcessor.git
@@ -43,10 +51,10 @@ services:
       AWS_REGION: local
       AWS_ACCESS_KEY_ID: test
       AWS_SECRET_ACCESS_KEY: test
-      AWS_ENDPOINT: http://localhost:4566
+      AWS_ENDPOINT: http://localstack:4566
       AWS_S3_BUCKET_NAME: distributed-analytics-system
-    depends_on:
-      - localstack
+    networks:
+      - local_network
 
   data_analyzer:
     build: https://github.com/distributed-analytics-system/DistributedSystem-DataAnalyzer.git
@@ -60,4 +68,12 @@ services:
       AWS_REGION: local
       AWS_ACCESS_KEY_ID: test
       AWS_SECRET_ACCESS_KEY: test
-      AWS_ENDPOINT: http://localhost:4566
+      AWS_ENDPOINT: http://localstack:4566
+    networks:
+      - local_network
+
+networks:
+  local_network:
+    driver: bridge
+  s_to_s_network:
+    driver: bridge
