@@ -40,7 +40,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/v1/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/timespent?screen=settings",
+					"raw": "http://localhost:8082/v1/statistics/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/timespent?screen=settings",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -98,7 +98,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/v1/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/clicks?screen=home",
+					"raw": "http://localhost:8082/v1/statistics/users/3588b44b-ec83-430a-85f1-c4eb6d50ec17/clicks?screen=home",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -112,8 +112,8 @@
 					],
 					"query": [
 						{
-							"key": "screen",
-							"value": "home"
+							"key": "timePeriod",
+							"value": "321308553"
 						}
 					]
 				}
