@@ -39,4 +39,3 @@ In order to test the system, import postman collections from **test** folder and
 
 ## Maintainer contact
 - vahagsaribeyan@gmail.com
-
